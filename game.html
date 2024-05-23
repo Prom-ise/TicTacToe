@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game TicTacToe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="gameBody">
+    <div class="wininng-scores">
+        <img class="logo1" src="Img/logo1.png" alt="logo pic">
+        <div class="player-x">
+            X : <span xscoreText>0</span>
+        </div>
+        <div class="player-o">
+            O : <span oscoreText>0</span>
+        </div>
+    </div>
+    <div class="container">
+        <!-- <div class="options2">
+            <div class="block">
+            <div>
+                <button id="singlePlayerBtn" onclick="singlePlayer()">Single Player</button><br>
+                <button id="multiplayerBtn" onclick="multiPlayer()">Multiplayer</button>
+            </div>
+        </div>
+            <p class="gridSize">Select Board</p>
+            <div class="grid">
+                <div class="wrapper">
+                    <div class="option">
+                        <input class="input" onclick="thirdGrid()" type="radio" name="btn" value="option1" checked="">
+                        <div class="btn">
+                            <span class="span">3 × 3</span>
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <input class="input" onclick="fourthGrid()" type="radio" name="btn" value="option3">
+                        <div class="btn">
+                            <span class="span">4 × 4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+       <div class="na">
+        <div class="navbar">
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+            <button class="toggle-btn2" id="toggleCanc" onclick="toggleSidebars()">×</button>
+        </div>
+    
+        <nav id="sidebar" class="sidebar">
+            <div class="options">
+                <div class="block">
+                <div>
+                    <button id="singlePlayerBtn" onclick="singlePlayer()">Single Player</button><br>
+                    <button id="multiplayerBtn" onclick="multiPlayer()">Multiplayer</button>
+                </div>
+            </div>
+                <p class="gridSize">Select Board</p>
+                <div class="grid">
+                    <div class="wrapper">
+                        <div class="option">
+                            <input class="input" onclick="thirdGrid()" type="radio" name="btn" value="option1" checked="">
+                            <div class="btn">
+                                <span class="span">3 × 3</span>
+                            </div>
+                        </div>
+    
+                        <div class="option">
+                            <input class="input" onclick="fourthGrid()" type="radio" name="btn" value="option3">
+                            <div class="btn">
+                                <span class="span">4 × 4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </div>
+    
+
+        <div>
+            <h4 class="turnText">Turn for</h4>
+            <div class="turns">
+                <div class="turn x">×</div>
+                <div class="turn o">o</div>
+                <div class="bg"></div>
+            </div>
+
+          
+                <div class="tic" id="tic">
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                    <div class="cell" data-cell id="cell"></div>
+                </div>
+            
+            
+            <div class="tick" id="tic">
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+                <div class="cell" data-comp id="cell"></div>
+            </div>
+
+            <div class="tic2" id="tic2">
+                <!-- Grid cells will be dynamically generated here -->
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+                <div class="cells" data-cells id="cells"></div>
+            </div>
+
+            <div class="winning-msg" winning-msg>
+                <div id="tic-wining-text" tic-wining-text></div>
+                <button id="restartbtn">Restart?</button>
+            </div>
+
+            <div>
+                <button type="submit" onclick="endGameCompletely()" id="endGame">
+                    End Game
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
