@@ -1,8 +1,8 @@
 const pleaseElement = document.querySelector('.please');
 const pleaseText = [
-  "Please select the mode you want to play",
+  "Select the mode you want to play",
   "Select the board size of you choice",
-  "Then click PLAY to start the Game",
+  "click PLAY to start the Game",
   "ENJOY THE GAME 😉"
 ];
 let currentSentence = 0;

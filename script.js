@@ -1,5 +1,5 @@
 // GAME PAGE
-
+// SINGLE PLAYER MODE
 const xClass = 'x'
 const oClass = 'o'
 const xClasses = 'x'
@@ -17,6 +17,7 @@ const winningCombo = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+
 const winningCombos = [
   [0, 1, 2],
   [1, 2, 3],
@@ -59,32 +60,9 @@ startGame()
 
 reststartButton.addEventListener('click', startGame)
 
-
-// function computerGame() {
-//   oturn = false;
-//   computerElement.forEach(comp => {
-//       comp.classList.remove(xClass);
-//       comp.classList.remove(oClass);
-//       comp.style.backgroundColor = '';
-//       // Remove player click event listener
-//       comp.removeEventListener('click', playerMove);
-//       comp.addEventListener('click', playerMove, { once: true })
-//   });
-//   // Remove class indicating player's turn
-//   tic.classList.remove(xClass);
-//   tic.classList.remove(oClass);
-//   setTicHoverClass();
-//   winningMsgElement.classList.remove('show');
-//   // Start with player's turn
-//   oturn = false;
-//   // Start the game loop
-//   playGame();
-// }
-
 function playGame() {
   // If it's player's turn
   if (!oturn) {
-      // Add event listener for player click
       computerElement.forEach(comp => {
           if (!comp.classList.contains(xClass) && !comp.classList.contains(oClass)) {
               comp.addEventListener('click', playerMove);
@@ -98,48 +76,74 @@ function playGame() {
               comp.removeEventListener('click', playerMove);
           }
       });
-      setTimeout(computerMove, 1000); // Delay computer move for 1 second for better UX
+      setTimeout(computerMove, 1500); 
   }
 }
 
 function playerMove(e) {
   const comp = e.target;
-  const computerClass = oturn ? oClass : xClass;
-  placeMarking(comp, computerClass);
-  if (computerWin(computerClass)) {
+  placeMarking(comp, xClass);
+  if (computerWin(xClass)) {
       endGamer(false);
   } else if (isDrawer()) {
       endGamer(true);
   } else {
       swapTurns();
       setTicHoverClass();
-      playGame(); // Proceed to next move
+      playGame(); 
   }
 }
 
 function computerMove() {
-  // Disable player clicks during the computer's turn
-  computerElement.forEach(comp => {
-      comp.removeEventListener('click', playerMove);
-  });
-  
   const emptyComps = Array.from(computerElement).filter(comp => !comp.classList.contains(xClass) && !comp.classList.contains(oClass));
-  const randomComp = emptyComps[Math.floor(Math.random() * emptyComps.length)];
-  placeMarking(randomComp, oClass); // Computer places its mark randomly
-  if (computerWin(oClass)) {
+
+  // Check for winning move for the computer
+  for (let comp of emptyComps) {
+    comp.classList.add(oClass);
+    if (computerWin(oClass)) {
+      placeMarking(comp, oClass);
       endGamer(false);
-  } else if (isDraw()) {
-      endGamer(true);
-  } else {
-      swapTurns();
-      setTicHoverClass();
-      // Re-enable player clicks after the computer's move
-      computerElement.forEach(comp => {
-          if (!comp.classList.contains(xClass) && !comp.classList.contains(oClass)) {
-              comp.addEventListener('click', playerMove);
-          }
-      });
+      return;
+    }
+    comp.classList.remove(oClass);
   }
+
+  // Check for blocking move to prevent player's win
+  for (let comp of emptyComps) {
+    comp.classList.add(xClass);
+    if (computerWin(xClass)) {
+      comp.classList.remove(xClass);
+      placeMarking(comp, oClass);
+      if (isDrawer()) {
+        endGamer(true);
+      } else {
+        swapTurns();
+        setTicHoverClass();
+        playGame();
+      }
+      return;
+    }
+    comp.classList.remove(xClass);
+  }
+
+  // Choose a random empty cell if no winning or blocking move is found
+  const randomComp = emptyComps[Math.floor(Math.random() * emptyComps.length)];
+  placeMarking(randomComp, oClass);
+  if (computerWin(oClass)) {
+    endGamer(false);
+  } else if (isDrawer()) {
+    endGamer(true);
+  } else {
+    swapTurns();
+    setTicHoverClass();
+    playGame();
+  }
+}
+
+function computerWin(computerClass) {
+  return winningCombo.some(combo => {
+        return combo.every(index => computerElement[index].classList.contains(computerClass));
+      });
 }
 
 function updateScoreDisplay() {
@@ -173,6 +177,7 @@ function endGamer(drawing) {
           }
       });
   }
+  isGameOver = true
   winningMsgElement.classList.add('show');
 }
 
@@ -185,38 +190,29 @@ function isDrawer() {
 function placeMarking(comp, computerClass) {
   comp.classList.add(computerClass);
 }
-
-// function swapTurns() {
-//   oturn = !oturn;
-// }
+function swapTurns() {
+  oturn = !oturn;
+}
 
 function setTicHoverClass() {
+  tic.classList.remove(xClass)
+  tic.classList.remove(oClass)
   if (oturn) {
-      tic.classList.add(oClass);
-      tic.classList.remove(xClass);
+    tic.classList.add(oClass)
   } else {
-      tic.classList.add(xClass);
-      tic.classList.remove(oClass);
+    tic.classList.add(xClass)
   }
 }
 
-function computerWin(computerClass) {
-  return winningCombo.some(combo => {
-      if (combo.every(index => computerElement[index].classList.contains(computerClass))) {
-          return true;
-      }
-      return false;
-  });
-}
+oturn = false;
+isGameOver = false;
+playGame();
 
 
 
 
 
-
-
-
-
+// MULTIPLAYER MODE
 function startGame() {
   oturn = false
   oturns = false
@@ -238,7 +234,6 @@ function startGame() {
     comp.classList.remove(xClass);
     comp.classList.remove(oClass);
     comp.style.backgroundColor = '';
-    // Remove player click event listener
     comp.removeEventListener('click', playerMove);
     comp.addEventListener('click', playerMove, { once: true })
 });
@@ -253,17 +248,15 @@ playGame();
   setTicHoverClass()
   setTic2HoverClass()
   winningMsgElement.classList.remove('show')
-  document.querySelector(".bg").style.left = "1em";
+  document.querySelector(".bg").style.left = "0";
 }
 
 function handleClick(e) {
-  // console.log("clicked");
   const cell = e.target
   const currentClass = oturn ? oClass : xClass
 
-  //PLACING THE MARK
   placeMark(cell, currentClass)
-  //CHECK FOR WIN
+  
   if (checkWin(currentClass)) {
     console.log("winner");
     endGame(false)
@@ -273,19 +266,13 @@ function handleClick(e) {
     swapTurns()
     setTicHoverClass()
   }
-  //CHECK FOR DRAW
-  //SWITCH TURNS
-
 }
 
 function handleClicks(e) {
-  // console.log("clicked");
   const cells = e.target
   const currentClasses = oturns ? oClasses : xClasses
 
-  //PLACING THE MARK
   placeMarks(cells, currentClasses)
-  //CHECK FOR WIN
   if (checkWins(currentClasses)) {
     console.log("winner");
     endGames(false)
@@ -295,9 +282,6 @@ function handleClicks(e) {
     swapTurn()
     setTic2HoverClass()
   }
-  //CHECK FOR DRAW
-  //SWITCH TURNS
-
 }
 
 function endGame(draw) {
@@ -319,7 +303,6 @@ function endGame(draw) {
     oscoreTextElement.innerText = `${oWins}`;
     winningCombo.forEach(combo => {
       if (combo.every(index => cellElement[index].classList.contains(currentClass))) {
-        // If the current combination contains all cells with the current class, color them green
         combo.forEach(index => {
           cellElement[index].style.backgroundColor = 'limegreen';
         });
@@ -348,7 +331,6 @@ function endGames(draws) {
     oscoreTextElement.innerText = `${oWins}`;
     winningCombos.forEach(combos => {
       if (combos.every(index => cellsElement[index].classList.contains(currentClasses))) {
-        // If the current combination contains all cells with the current class, color them green
         combos.forEach(index => {
           cellsElement[index].style.backgroundColor = 'limegreen';
         });
@@ -379,17 +361,14 @@ function placeMarks(cells, currentClasses) {
 
 function swapTurns() {
   oturn = !oturn; // Toggle the value of oturn
-
-  // Use a conditional (ternary) operator to set the style based on oturn
-  document.querySelector(".bg").style.left = oturn ? "6.16em" : "1em";
+  document.querySelector(".bg").style.left = oturn ? "5.25em" : "0";
 }
 
 function swapTurn() {
   oturns = !oturns; // Toggle the value of oturn
-
-  // Use a conditional (ternary) operator to set the style based on oturn
-  document.querySelector(".bg").style.left = oturns ? "6.16em" : "1em";
+  document.querySelector(".bg").style.left = oturns ? "5.25em" : "0";
 }
+
 function setTicHoverClass() {
   tic.classList.remove(xClass)
   tic.classList.remove(oClass)
@@ -427,34 +406,6 @@ function checkWins(currentClasses) {
     return false;
   });
 }
-
-
-
-
-// function endGaming(drawing) {
-//     if (drawing) {
-//       winningMsgTextElement.innerText = `DRAW!`;
-//     } else {
-//       const currentClasses = oturns ? oClasses : xClasses;
-//       winningMsgTextElement.innerText = `${oturns ? "O's" : "X's"} WINS!`;
-//       if (oturns) {
-//         oWins++;
-//       } else {
-//         xWins++;
-//       }
-//       xscoreTextElement.innerText = `${xWins}`;
-//       oscoreTextElement.innerText = `${oWins}`;
-//       winningCombos.forEach(combos => {
-//         if (combos.every(index => cellsElement[index].classList.contains(currentClasses))) {
-//           // If the current combination contains all cells with the current class, color them green
-//           combos.forEach(index => {
-//             cellsElement[index].style.backgroundColor = 'limegreen';
-//           });
-//         }
-//       });
-//     }
-//     winningMsgElement.classList.add('show');
-// }
 
 
 

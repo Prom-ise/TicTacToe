@@ -336,19 +336,7 @@
   width: 15vh;
   height: 15vh
 }
-/* .cells {
-  width: 20vh;
-  height: 20vh;
-  background-color: rgba(17, 21, 73, 0.9);
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 3.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border: 2px solid white;
-} */
+
 .tic {
   display: grid;
   justify-content: center;
@@ -364,26 +352,38 @@
   justify-items: center;
   grid-template-columns: repeat(3, auto);
 }
-.turns{
-  display: flex;
-   justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  font-size: 2em;
-  position: relative;
-}
-
-.turn {
-  width: 25vh;
-  height: 7vh;
-  box-sizing: border-box;
-  border: 2px solid white;
+.aligned{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.turn-container{
+  width: 170px;
+  height: 80px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+  margin-bottom: 2em;
+}
+.turn-container .turnText{
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.turn-container .turnBox{
+  border: 2px solid #fff;
   font-size: 1.6em;
-  font-weight: 500;
-  padding-bottom: 3px;
+  font-weight: 700;
+}
+.turn-container .turnBox:nth-child(even){
+  border-right: none;
+}
+.turn-container .turnBox .aligned .x{
+  color: red;
+}
+.turn-container .turnBox .aligned .o{
+  color: aqua;
 }
 
 .player-x, .player-o{
@@ -398,21 +398,15 @@
 .player-o span{
   color: aqua;
 }
-.turn.x{
-  color: red;
-}
-.turn.o{
-  color: aqua;
-  padding-bottom: 7px;
-}
+
 .bg{
-  width: 25vh;
-  height: 7vh;
-  box-sizing: border-box;
   position: absolute;
-  border: none;
   bottom: 0;
-  left: 1em;
+  left: 0;
+  width: 87px;
+  height: 40px;
+  box-sizing: border-box;
+  border: none;
   background-color: lime;
   z-index: -1;
   transition: 0.3s;
