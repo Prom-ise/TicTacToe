@@ -419,6 +419,10 @@ function thirdGrid(){
   const you = document.querySelector('.you-x');
   const compo = document.querySelector('.comp-o');
   const playo = document.querySelector('.play-o');
+  const turn = document.querySelector('.turn-x');
+  const youTurn = document.querySelector('.youTurn-x');
+  const compoTurn = document.querySelector('.compTurn-o');
+  const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   
@@ -432,6 +436,10 @@ function thirdGrid(){
   playo.style.display = 'inline'
   you.style.display = 'none'
   compo.style.display = 'none'
+  turn.style.display = 'inline'
+  youTurn.style.display = 'none'
+  compoTurn.style.display = 'none'
+  turno.style.display = 'inline'
   tic.style.display = 'grid';
   tic2.style.display = 'none';
   tick.style.display = 'none';
@@ -447,6 +455,10 @@ function fourthGrid(){
   const you = document.querySelector('.you-x');
   const compo = document.querySelector('.comp-o');
   const playo = document.querySelector('.play-o');
+  const turn = document.querySelector('.turn-x');
+  const youTurn = document.querySelector('.youTurn-x');
+  const compoTurn = document.querySelector('.compTurn-o');
+  const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   
@@ -458,6 +470,10 @@ function fourthGrid(){
   playo.style.display = 'inline'
   you.style.display = 'none'
   compo.style.display = 'none'
+  turn.style.display = 'inline'
+  youTurn.style.display = 'none'
+  compoTurn.style.display = 'none'
+  turno.style.display = 'inline'
   tic.style.display = 'none';
   tic2.style.display = 'grid';
   tick.style.display = 'none';
@@ -475,6 +491,10 @@ function singlePlayer(){
   const you = document.querySelector('.you-x');
   const compo = document.querySelector('.comp-o');
   const playo = document.querySelector('.play-o');
+  const turn = document.querySelector('.turn-x');
+  const youTurn = document.querySelector('.youTurn-x');
+  const compoTurn = document.querySelector('.compTurn-o');
+  const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   resetScores()
@@ -488,6 +508,10 @@ function singlePlayer(){
   playo.style.display = 'none'
   you.style.display = 'inline'
   compo.style.display = 'inline'
+  turn.style.display = 'none'
+  youTurn.style.display = 'inline'
+  compoTurn.style.display = 'inline'
+  turno.style.display = 'none'
   tic.style.display = 'none';
   tic2.style.display = 'none';
   tick.style.display = 'grid';
@@ -503,6 +527,10 @@ function multiPlayer(){
   const you = document.querySelector('.you-x');
   const compo = document.querySelector('.comp-o');
   const playo = document.querySelector('.play-o');
+  const turn = document.querySelector('.turn-x');
+  const youTurn = document.querySelector('.youTurn-x');
+  const compoTurn = document.querySelector('.compTurn-o');
+  const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   startGame()
@@ -517,6 +545,10 @@ function multiPlayer(){
   playo.style.display = 'inline'
   you.style.display = 'none'
   compo.style.display = 'none'
+  turn.style.display = 'inline'
+  youTurn.style.display = 'none'
+  compoTurn.style.display = 'none'
+  turno.style.display = 'inline'
   tick.style.display = 'none';
   tic2.style.display = 'none';
   tic.style.display = 'grid';

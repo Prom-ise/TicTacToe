@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game TicTacToe</title>
+    <link rel="icon" href="Img/logo1.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,32 +23,6 @@
         </div>
     </div>
     <div class="container">
-        <!-- <div class="options2">
-            <div class="block">
-            <div>
-                <button id="singlePlayerBtn" onclick="singlePlayer()">Single Player</button><br>
-                <button id="multiplayerBtn" onclick="multiPlayer()">Multiplayer</button>
-            </div>
-        </div>
-            <p class="gridSize">Select Board</p>
-            <div class="grid">
-                <div class="wrapper">
-                    <div class="option">
-                        <input class="input" onclick="thirdGrid()" type="radio" name="btn" value="option1" checked="">
-                        <div class="btn">
-                            <span class="span">3 × 3</span>
-                        </div>
-                    </div>
-
-                    <div class="option">
-                        <input class="input" onclick="fourthGrid()" type="radio" name="btn" value="option3">
-                        <div class="btn">
-                            <span class="span">4 × 4</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
        <div class="na">
         <div class="navbar">
             <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
@@ -91,8 +66,8 @@
             </div>
             <div class="turn-container">
             <h4 class="turnText">Turn for</h4>
-                <div class="turnBox aligned x">×</div>
-                <div class="turnBox aligned o">o</div>
+                <div class="turnBox aligned x"><span class="turn-x">x</span><span class="youTurn-x">Player</span></div>
+                <div class="turnBox aligned o"><span class="turn-o">o</span><span class="compTurn-o">Kira</span></div>
                 <div class="bg"></div>
         </div>
 
@@ -123,7 +98,6 @@
             </div>
 
             <div class="tic2" id="tic2">
-                <!-- Grid cells will be dynamically generated here -->
                 <div class="cells" data-cells id="cells"></div>
                 <div class="cells" data-cells id="cells"></div>
                 <div class="cells" data-cells id="cells"></div>
