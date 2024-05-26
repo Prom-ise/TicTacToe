@@ -210,10 +210,31 @@ playGame();
 
 
 
+function loader() {
+  const honeyComb = document.querySelector('.honeycomb');
+  const mainBody = document.querySelector('.mainBody');
+
+  // Show the loader and hide the main content initially
+  honeyComb.style.display = 'block';
+  mainBody.style.display = 'none';
+
+  const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
+
+  // After 2 seconds, hide the loader and show the main content
+  setTimeout(() => {
+    honeyComb.style.display = 'none';
+    mainBody.style.display = 'block';
+  }, randomTimeout);
+}
+
+// Run the loader function when the window loads
+window.onload = loader;
+
 
 
 // MULTIPLAYER MODE
 function startGame() {
+  // loader()
   oturn = false
   oturns = false
   cellElement.forEach(cell => {
