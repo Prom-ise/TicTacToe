@@ -65,8 +65,7 @@ function playGame() {
   if (!oturn) {
       computerElement.forEach(comp => {
           if (!comp.classList.contains(xClass) && !comp.classList.contains(oClass)) {
-              comp.addEventListener('click', playerMove);
-              
+            comp.addEventListener('click', playerMove, { once: true });
           }
       });
   } else {
@@ -92,6 +91,7 @@ function playerMove(e) {
       setTicHoverClass();
       playGame(); 
   }
+  
 }
 
 function computerMove() {
