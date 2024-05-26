@@ -207,6 +207,8 @@
  
 
 /* GAME PAGE */
+
+
 .navar{
   display: none;
 }
@@ -225,9 +227,23 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   overflow: hidden;
 }
+.gameMode{
+  text-align: center;
+  font-size: 1.4em;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* margin-top: 1.6em; */
+}
+.gameMode span{
+  color: limegreen;
+}
+
+.sing{
+  display: none;
+}
 .container {
   display: flex;
-  /* gap: 14em; */
 }
 .options{
   position: relative;
@@ -307,23 +323,36 @@
 .turn-container .turnBox:nth-child(even){
   border-right: none;
 }
-.turn-container .turnBox .aligned .x{
+ .x{
   color: red;
 }
-.turn-container .turnBox .aligned .o{
+ .o{
   color: aqua;
 }
-
+.you-x{
+  display: none;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.6em;
+}
+.comp-o{
+  font-family: "Rowdies", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: none;
+  font-size: 0.6em;
+}
 .player-x, .player-o{
   color: white;
   font-size: 1.4em;
   margin-top: 0.5em;
 }
-.player-x span{
+.scor{
   color: red;
 }
 
-.player-o span{
+.scord{
   color: aqua;
 }
 
@@ -613,7 +642,8 @@
 .sidebar .options {
     margin-top: 70px; 
 }
-.block{
+.blockBut{
+  gap: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -646,8 +676,16 @@
     height: 100%;
     padding: 5px;
   }
+  .sidebar .options{
+    margin-left: -5em;
+  }
 }
-@media (max-width: 390px){
+@media (max-width: 320px){
+  .sidebar .options{
+    margin-left: -3em;
+  }
+}
+@media (max-width: 385px){
   .sidebar{
     width: 370px;
     height: 100%;

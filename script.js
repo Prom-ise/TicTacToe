@@ -76,7 +76,7 @@ function playGame() {
               comp.removeEventListener('click', playerMove);
           }
       });
-      setTimeout(computerMove, 1500); 
+      setTimeout(computerMove, 1000); 
   }
 }
 
@@ -413,6 +413,12 @@ function thirdGrid(){
   const tic = document.querySelector('.tic');
   const tic2 = document.querySelector('.tic2');
   const tick = document.querySelector('.tick');
+  const mult = document.querySelector('.mult');
+  const sing = document.querySelector('.sing');
+  const play = document.querySelector('.play-x');
+  const you = document.querySelector('.you-x');
+  const compo = document.querySelector('.comp-o');
+  const playo = document.querySelector('.play-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   
@@ -420,6 +426,12 @@ function thirdGrid(){
   singleForth.style.backgroundColor = 'pink'
   multiForth.style.display = 'block'
   multiForth.style.backgroundColor = 'lightcoral'
+  mult.style.display = 'inline'
+  sing.style.display = 'none';
+  play.style.display = 'inline'
+  playo.style.display = 'inline'
+  you.style.display = 'none'
+  compo.style.display = 'none'
   tic.style.display = 'grid';
   tic2.style.display = 'none';
   tick.style.display = 'none';
@@ -429,11 +441,23 @@ function fourthGrid(){
   const tic = document.querySelector('.tic');
   const tic2 = document.querySelector('.tic2');
   const tick = document.querySelector('.tick');
+  const mult = document.querySelector('.mult');
+  const sing = document.querySelector('.sing');
+  const play = document.querySelector('.play-x');
+  const you = document.querySelector('.you-x');
+  const compo = document.querySelector('.comp-o');
+  const playo = document.querySelector('.play-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   
   singleForth.style.display = 'none'
   multiForth.style.display = 'none'
+  mult.style.display = 'inline'
+  sing.style.display = 'none'
+  play.style.display = 'inline'
+  playo.style.display = 'inline'
+  you.style.display = 'none'
+  compo.style.display = 'none'
   tic.style.display = 'none';
   tic2.style.display = 'grid';
   tick.style.display = 'none';
@@ -445,6 +469,12 @@ function singlePlayer(){
   const tic = document.querySelector('.tic');
   const tic2 = document.querySelector('.tic2');
   const tick = document.querySelector('.tick');
+  const mult = document.querySelector('.mult');
+  const sing = document.querySelector('.sing');
+  const play = document.querySelector('.play-x');
+  const you = document.querySelector('.you-x');
+  const compo = document.querySelector('.comp-o');
+  const playo = document.querySelector('.play-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   resetScores()
@@ -452,6 +482,12 @@ function singlePlayer(){
 
   singleForth.style.backgroundColor = 'lightcoral'
   multiForth.style.backgroundColor = 'pink'
+  mult.style.display = 'none'
+  sing.style.display = 'inline'
+  play.style.display = 'none'
+  playo.style.display = 'none'
+  you.style.display = 'inline'
+  compo.style.display = 'inline'
   tic.style.display = 'none';
   tic2.style.display = 'none';
   tick.style.display = 'grid';
@@ -461,6 +497,12 @@ function multiPlayer(){
   const tic = document.querySelector('.tic');
   const tic2 = document.querySelector('.tic2');
   const tick = document.querySelector('.tick');
+  const mult = document.querySelector('.mult');
+  const sing = document.querySelector('.sing');
+  const play = document.querySelector('.play-x');
+  const you = document.querySelector('.you-x');
+  const compo = document.querySelector('.comp-o');
+  const playo = document.querySelector('.play-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
   startGame()
@@ -469,6 +511,12 @@ function multiPlayer(){
   singleForth.style.backgroundColor = 'pink'
   multiForth.style.backgroundColor = 'lightcoral'
 
+  mult.style.display = 'inline'
+  sing.style.display = 'none'
+  play.style.display = 'inline'
+  playo.style.display = 'inline'
+  you.style.display = 'none'
+  compo.style.display = 'none'
   tick.style.display = 'none';
   tic2.style.display = 'none';
   tic.style.display = 'grid';

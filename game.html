@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game TicTacToe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Madimi+One&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Permanent+Marker&family=Pinyon+Script&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="gameBody">
     <div class="wininng-scores">
         <img class="logo1" src="Img/logo1.png" alt="logo pic">
         <div class="player-x">
-            X : <span xscoreText>0</span>
+            <span class="play-x">X</span><span class="you-x">Player</span> : <span xscoreText class="scor">0</span>
         </div>
         <div class="player-o">
-            O : <span oscoreText>0</span>
+            <span class="play-o">O</span><span class="comp-o">Kira</span> : <span oscoreText class="scord">0</span>
         </div>
     </div>
     <div class="container">
@@ -53,9 +56,9 @@
     
         <nav id="sidebar" class="sidebar">
             <div class="options">
-                <div class="block">
+                <div class="blockBut">
                 <div>
-                    <button id="singlePlayerBtn" onclick="singlePlayer()">Single Player</button><br>
+                    <button id="singlePlayerBtn" onclick="singlePlayer()">Play With Kira 🤖</button><br>
                     <button id="multiplayerBtn" onclick="multiPlayer()">Multiplayer</button>
                 </div>
             </div>
@@ -83,6 +86,9 @@
     
 
         <div>
+            <div class="gameMode">
+                <h3>MODE: <span class="mult">MULTIPLAYER</span><span class="sing">SINGLE PLAYER</span></h3>
+            </div>
             <div class="turn-container">
             <h4 class="turnText">Turn for</h4>
                 <div class="turnBox aligned x">×</div>
