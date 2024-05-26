@@ -568,7 +568,6 @@
     color: whitesmoke;
     font-size: 2em;
     cursor: pointer;
-   
 }
 .toggle-btn2{
   display: none;
@@ -650,7 +649,7 @@
 }
 @media (max-width: 390px){
   .sidebar{
-    width: 360px;
+    width: 370px;
     height: 100%;
   }
 }
