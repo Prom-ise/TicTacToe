@@ -650,7 +650,7 @@
 }
 @media (max-width: 390px){
   .sidebar{
-    width: 390px;
+    width: 360px;
     height: 100%;
   }
 }
