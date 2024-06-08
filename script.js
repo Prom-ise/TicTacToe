@@ -162,7 +162,7 @@ function endGamer(drawing) {
       winningMsgTextElement.innerText = `DRAW!`;
   } else {
       const computerClass = oturn ? oClass : xClass;
-      winningMsgTextElement.innerText = `${oturn ? "You Loose!" : "You Win!"}`;
+      winningMsgTextElement.innerText = `${oturn ? "You Loose! 😥" : "You Win! 🥳"}`;
       if (oturn) {
         oWins++;
       } else {
