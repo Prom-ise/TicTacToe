@@ -5,6 +5,7 @@
 }
 .backbone{
   background-color: #030e1c;
+  overflow: hidden;
 }
 .body {
   background-image: url("Img/logo.png");
