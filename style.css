@@ -57,7 +57,11 @@
   font-weight: 400;
   font-style: normal;
 }
-
+.felix{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .inpu{
   width: 15em;
   border-radius: 2em;
@@ -90,6 +94,7 @@
   color: lime;
 }
 
+
 #multiplayerBtn{
   background-color: lightcoral;
 }
@@ -106,10 +111,48 @@
   cursor: pointer;
   width: 15rem;
 }
+
 #singlePlayerBtn:active, #singlePlayerBtn:focus,
 #singlePlayerBtn:hover, #multiplayerBtn:active, #multiplayerBtn:focus, #multiplayerBtn:hover  {
   background-color: lightcoral;
   transition: 0.4s;
+}
+@media (max-width: 800px){
+  .inpu{
+    width: 13em;
+    font-size: 1.3em;
+  }
+  .inputDes{
+    gap: 1em;
+  }
+  #singlePlayerBtn, #multiplayerBtn{
+    font-size: 1em;
+    padding: 1em 1em;
+    width: 11em;
+    font-weight: 600;
+  }
+}
+@media (max-width: 550px) {
+  .welcome{
+    font-size: 4em;
+    margin-top: 1em;
+  }
+  .optio{
+    margin-top: 9em;
+  }
+  .inpu{
+    width: 8em;
+    font-size: 1.2em;
+  }
+  .inputDes{
+    gap: 1em;
+  }
+  #singlePlayerBtn, #multiplayerBtn{
+    font-size: 0.8em;
+    padding: 1em 1em;
+    width: 11em;
+    font-weight: 600;
+  }
 }
 .grid {
   gap: 20px;
