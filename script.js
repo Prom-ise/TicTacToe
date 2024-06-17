@@ -1,3 +1,67 @@
+// const honeyComb = document.getElementById('honeyComb');
+const mainBody = document.getElementById('mainBody');
+const gameMain = document.getElementById('gameMain');
+const mainGame = document.getElementById('mainGame');
+const na = document.getElementById('na');
+const score = document.getElementById('score');
+const player1Input = document.getElementById('player1');
+const player2Input = document.getElementById('player2');
+const xscoreTextElement = document.querySelector('[xscoreText]')
+const oscoreTextElement = document.querySelector('[oscoreText]')
+const player1NameElement = document.querySelector('[player1Name]')
+const player2NameElement = document.querySelector('[player2Name]')
+const player1NamesElement = document.querySelector('[player1Names]')
+const player2NamesElement = document.querySelector('[player2Names]')
+// document.getElementById('mainBody')
+// document.getElementById('gameMain')
+// document.getElementById('mainGame')
+// document.getElementById('na')
+// document.getElementById('score')
+const honeyComb = document.querySelector('.honeycomb');
+let player1Name = '';
+let player2Name = '';
+
+
+function abbreviateName(name) {
+  const maxLength = 5; // Maximum length before truncating
+  if (name.length <= maxLength) {
+      return name;
+  }
+  return name.slice(0, maxLength) + '...';
+}
+function gameOn(){
+  player1Name = player1Input.value;
+  player2Name = player2Input.value;
+
+  const abbreviatedPlayer1Name = abbreviateName(player1Name);
+  const abbreviatedPlayer2Name = abbreviateName(player2Name);
+
+  // Display player names in the score area
+  player1NameElement.textContent = `${player1Name}`;
+  player2NameElement.textContent = `${player2Name}`;
+  player1NamesElement.textContent = `${abbreviatedPlayer1Name}`;
+  player2NamesElement.textContent = `${abbreviatedPlayer2Name}`;
+  // Show loader, hide main body
+  honeyComb.style.display = 'block';
+  mainBody.style.display = 'none';
+  
+  // Set a random timeout between 1000ms and 5000ms
+  const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
+  setTimeout(() => {
+      // Hide loader, show game elements
+      honeyComb.style.display = 'none';
+      gameMain.style.display = 'grid';
+      mainGame.style.display = 'grid';
+      na.style.display = 'block';
+      score.style.display = 'grid';
+  }, randomTimeout);
+}
+
+function endGameCompletely() {
+  location.reload();
+}
+
+
 // GAME PAGE
 // SINGLE PLAYER MODE
 const xClass = 'x'
@@ -47,8 +111,8 @@ const cellElement = document.querySelectorAll('[data-cell]')
 const cellsElement = document.querySelectorAll('[data-cells]')
 const computerElement = document.querySelectorAll('[data-comp]');
 const winningMsgTextElement = document.querySelector('[tic-wining-text]')
-const xscoreTextElement = document.querySelector('[xscoreText]')
-const oscoreTextElement = document.querySelector('[oscoreText]')
+// const xscoreTextElement = document.querySelector('[xscoreText]')
+// const oscoreTextElement = document.querySelector('[oscoreText]')
 const winningMsgElement = document.querySelector('[winning-msg]')
 const reststartButton = document.getElementById('restartbtn')
 const tic = document.getElementById('tic')
@@ -149,6 +213,8 @@ function computerWin(computerClass) {
 function updateScoreDisplay() {
   xscoreTextElement.innerText = `${xWins}`;
   oscoreTextElement.innerText = `${oWins}`;
+  player1NameElement.innerText = `${player1Name}`
+  player2NameElement.innerText = `${player2Name}`
 }
 
 function resetScores() {
@@ -210,25 +276,25 @@ playGame();
 
 
 
-function loader() {
-  const honeyComb = document.querySelector('.honeycomb');
-  const mainBody = document.querySelector('.mainBody');
+// function loader() {
+//   const honeyComb = document.querySelector('.honeycomb');
+//   const mainBody = document.querySelector('.mainBody');
 
-  // Show the loader and hide the main content initially
-  honeyComb.style.display = 'block';
-  mainBody.style.display = 'none';
+//   // Show the loader and hide the main content initially
+//   honeyComb.style.display = 'block';
+//   mainBody.style.display = 'none';
 
-  const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
+//   const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
 
-  // After 2 seconds, hide the loader and show the main content
-  setTimeout(() => {
-    honeyComb.style.display = 'none';
-    mainBody.style.display = 'block';
-  }, randomTimeout);
-}
+//   // After 2 seconds, hide the loader and show the main content
+//   setTimeout(() => {
+//     honeyComb.style.display = 'none';
+//     mainBody.style.display = 'block';
+//   }, randomTimeout);
+// }
 
-// Run the loader function when the window loads
-window.onload = loader;
+// // Run the loader function when the window loads
+// window.onload = loader;
 
 
 
@@ -310,7 +376,7 @@ function endGame(draw) {
     winningMsgTextElement.innerText = `DRAW!`;
   } else {
     const currentClass = oturn ? oClass : xClass;
-    winningMsgTextElement.innerText = `${oturn ? "O's" : "X's"} WINS!`;
+    winningMsgTextElement.innerText = `${oturn ? player2Name : player1Name} WINS!`;
     if (oturn) {
       oWins++;
     } else {
@@ -322,6 +388,8 @@ function endGame(draw) {
     // console.log(`O has won ${oWins} time(s)`);
     xscoreTextElement.innerText = `${xWins}`;
     oscoreTextElement.innerText = `${oWins}`;
+    player1NameElement.innerText = `${player1Name}`
+    player2NameElement.innerText = `${player2Name}`
     winningCombo.forEach(combo => {
       if (combo.every(index => cellElement[index].classList.contains(currentClass))) {
         combo.forEach(index => {
@@ -338,7 +406,7 @@ function endGames(draws) {
     winningMsgTextElement.innerText = `DRAW!`;
   } else {
     const currentClasses = oturns ? oClasses : xClasses;
-    winningMsgTextElement.innerText = `${oturns ? "O's" : "X's"} WINS!`;
+    winningMsgTextElement.innerText = `${oturns ? player2Name : player1Name} WINS!`;
     if (oturns) {
       oWins++;
     } else {
@@ -518,11 +586,13 @@ function singlePlayer(){
   const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
+  const inpuDes = document.querySelector('#inpuDes')
   resetScores()
   startGame()
 
   singleForth.style.backgroundColor = 'lightcoral'
   multiForth.style.backgroundColor = 'pink'
+  inpuDes.style.display = 'none'
   mult.style.display = 'none'
   sing.style.display = 'inline'
   play.style.display = 'none'
@@ -554,6 +624,7 @@ function multiPlayer(){
   const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
+  const inpuDes = document.querySelector('#inpuDes')
   startGame()
   resetScores()
 
@@ -562,6 +633,7 @@ function multiPlayer(){
 
   mult.style.display = 'inline'
   sing.style.display = 'none'
+  inpuDes.style.display = 'flex'
   play.style.display = 'inline'
   playo.style.display = 'inline'
   you.style.display = 'none'
@@ -611,8 +683,4 @@ blurBackground.onclick = toggleSidebar;
 document.body.appendChild(blurBackground);
 
 
-
-function endGameCompletely() {
-  window.location.href = 'index.html';
-}
 

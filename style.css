@@ -3,19 +3,26 @@
   margin: 0;
   box-sizing: border-box;
 }
+.backbone{
+  background-color: #030e1c;
+}
 .body {
   background-image: url("Img/logo.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+  overflow: hidden;
   width: 100%;
   display: flex;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  /* animation: scaler 0.5s ease-in-out; */
+}
+.optio{
+  margin-top: 15em;
 }
 .contain {
   margin-top: 3%;
@@ -24,7 +31,8 @@
   align-items: center;
 }
 .welcome {
-  font-size: 4rem;
+  font-size: 5rem;
+  margin-top: -0.5em;
   text-align: center;
   color: lime;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -32,10 +40,53 @@
 .please {
   text-align: center;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 2em;
-  font-size: 18px;
+  font-size: 28px;
   white-space: wrap; 
+  backdrop-filter: blur(10px);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.inputDes{
+  display: flex;
+  gap: 5em;
+}
+.reggae-one-regular {
+  font-family: "Reggae One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inpu{
+  width: 15em;
+  border-radius: 2em;
+  border: 2px solid lime;
+  background-color: transparent;
+  backdrop-filter: blur(13px);
+  height: 1.7em;
+  color: aqua;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-shadow:
+        -1px -1px 0 black,  /* Top-left shadow */
+        1px -1px 0 black,   /* Top-right shadow */
+        -1px 1px 0 black,   /* Bottom-left shadow */
+        1px 1px 0 black;  
+  font-family: "Reggae One", system-ui;
+  text-transform: capitalize;
+}
+.inpu::placeholder{
+  color: white;
+  opacity: 0.3;
+  font-size: 1em;
+}
+.inpu:focus{
+  border: 2px solid transparent;
+  outline: 3px solid aqua;
+  transition: 0.3s;
+  backdrop-filter: blur(3px);
+  color: lime;
 }
 
 #multiplayerBtn{
@@ -64,6 +115,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.bodyGame{
+  display: none;
+  background-image: url("Img/ticImg.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow: hidden;
+}
+.na{
+  display: none;
 }
 .wrapper {
   --font-color-dark: black;
@@ -346,9 +416,11 @@
   align-items: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   overflow: hidden;
+  z-index: -3;
 }
 .mainBody{
   display: none;
+  z-index: 3;
 }
 
 .gameMode{
@@ -397,6 +469,9 @@
   margin-left: -1em;
   margin-top: 10em;
 }
+#score{
+  display: none;
+}
 
 .wininng-scores{
   position: absolute;
@@ -410,6 +485,7 @@
   display: flex;
   animation: winns 0.5s linear 0.01s 1 forwards;
   opacity: 0;
+  /* z-index: 1; */
 }
 @keyframes winns {
   from {
@@ -431,6 +507,7 @@
 
 .tic2{
   display: grid;
+  z-index: 2;
   display: none;
   grid-template-columns: repeat(4, auto);
   justify-content: center;
@@ -440,7 +517,7 @@
 }
 .tic2 .cells{
   width: 15vh;
-  height: 15vh
+  height: 15vh;
 }
 
 .tic {
@@ -483,15 +560,25 @@
   border: 2px solid #fff;
   font-size: 1.6em;
   font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .turn-container .turnBox:nth-child(even){
   border-right: none;
 }
  .x{
   color: red;
+  z-index: 2;
 }
  .o{
   color: aqua;
+  z-index: 2;
+}
+.play-x, .play-o{
+  font-family: "Rowdies", sans-serif;
+  text-transform: capitalize;
+  font-size: 0.93em;
 }
 .you-x{
   display: none;
@@ -529,7 +616,7 @@
   box-sizing: border-box;
   border: none;
   background-color: lime;
-  z-index: -1;
+  z-index: 0;
   transition: 0.3s;
 }
 .youTurn-x, .compTurn-o{
@@ -732,6 +819,7 @@
   font-size: 2rem;
   margin-top: 2rem;
   cursor: pointer;
+  z-index: 2;
 }
 #endGame:hover, #endGame:focus{
   background-color: darkred;
@@ -747,6 +835,20 @@
   height: 3em;
   border-radius: 15px;
   box-shadow: 0 10px 10px 0px blue;
+}
+
+@media (max-width: 450px){
+  .playerScores{
+    position: fixed;
+    top: -1em;
+    left: 10em;
+  }
+}
+@media (max-width: 280px){
+  .playerScores{
+    top: 0.1em;
+    font-size: 0.7em;
+  }
 }
 
 .navbar {
