@@ -23,7 +23,7 @@
   /* animation: scaler 0.5s ease-in-out; */
 }
 .optio{
-  margin-top: 15em;
+  margin-top: 13em;
 }
 .contain {
   margin-top: 3%;
@@ -36,7 +36,7 @@
   margin-top: -0.5em;
   text-align: center;
   color: lime;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Reggae One", system-ui;
 }
 .please {
   text-align: center;
@@ -94,7 +94,16 @@
   color: lime;
 }
 
-
+.error{
+  opacity: 0;
+  color: red;
+  font-size: 1.2em;
+  backdrop-filter: blur(10px);
+  border-radius: 20%;
+  text-align: center;
+  font-weight: 600;
+  font-family: "Reggae One", system-ui;
+}
 #multiplayerBtn{
   background-color: lightcoral;
 }
@@ -109,7 +118,8 @@
   border: none;
   padding: 0.7rem 2rem;
   cursor: pointer;
-  width: 15rem;
+  width: 16rem;
+  font-family: "Reggae One", system-ui;
 }
 
 #singlePlayerBtn:active, #singlePlayerBtn:focus,
@@ -985,6 +995,9 @@
 
 .blur-background.show {
     display: block;
+}
+.tic-wining-text{
+  text-transform: capitalize;
 }
 
 /* RESPONSIVENESS */

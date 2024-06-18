@@ -23,17 +23,18 @@
         <h1 class="welcome animate__animated animate__backInDown">Welcome to</h1>
 
         <div class="optio">
+          <div class="error">Ooops! Input player Name to continue</div>
           <div class="felix">
           <div class="inputDes" id="inpuDes">
             <!-- <p class="please animate__animated animate__backInRight animate__delay-1s"></p><br> -->
-            <div><input name='player1' id="player1" value="X player" maxlength="8" class="inpu" placeholder="Player 1" type="text" /></div>
-            <div><input name='player2' id="player2" value="O player" maxlength="8" class="inpu" placeholder="Player 2" type="text" /></div>
+            <div><input name='player1' id="player1" value="X player" maxlength="8" class="inpu animate__animated animate__backInLeft" placeholder="Player 1" type="text" /></div>
+            <div><input name='player2' id="player2" value="O player" maxlength="8" class="inpu animate__animated animate__backInRight" placeholder="Player 2" type="text" /></div>
             </div>
           </div>
           
           <div class="grid">
-            <button id="singlePlayerBtn" onclick="singlePlayer()">Play With Kira 🤖</button>
-            <button id="multiplayerBtn" onclick="multiPlayer()">Multiplayer</button>
+            <button id="singlePlayerBtn" class="animate__animated animate__backInLeft animate__delay-1s" onclick="singlePlayer()">Play With Kira 🤖</button>
+            <button id="multiplayerBtn" class="animate__animated animate__backInRight animate__delay-1s" onclick="multiPlayer()">Multiplayer</button>
           </div>
           <p class="gridSize">Select Board</p>
           <div class="grid">
@@ -55,7 +56,7 @@
           </div>
         </div>
         <div class="message" id="message">
-          <button type="button" class="animate__animated animate__backInLeft animate__delay-1s" onclick="gameOn()"
+          <button type="button" class="animate__animated animate__backInLeft animate__delay-2s" onclick="gameOn()"
             id="startBtn"><span>Play</span></button>
         </div>
       </div>

@@ -1,4 +1,3 @@
-// const honeyComb = document.getElementById('honeyComb');
 const mainBody = document.getElementById('mainBody');
 const gameMain = document.getElementById('gameMain');
 const mainGame = document.getElementById('mainGame');
@@ -12,11 +11,6 @@ const player1NameElement = document.querySelector('[player1Name]')
 const player2NameElement = document.querySelector('[player2Name]')
 const player1NamesElement = document.querySelector('[player1Names]')
 const player2NamesElement = document.querySelector('[player2Names]')
-// document.getElementById('mainBody')
-// document.getElementById('gameMain')
-// document.getElementById('mainGame')
-// document.getElementById('na')
-// document.getElementById('score')
 const honeyComb = document.querySelector('.honeycomb');
 let player1Name = '';
 let player2Name = '';
@@ -27,38 +21,52 @@ function abbreviateName(name) {
   if (name.length <= maxLength) {
       return name;
   }
-  return name.slice(0, maxLength) + '...';
+  return name.slice(0, maxLength) + '..';
 }
 function gameOn(){
+  let error = document.querySelector(".error");
   player1Name = player1Input.value;
   player2Name = player2Input.value;
 
   const abbreviatedPlayer1Name = abbreviateName(player1Name);
   const abbreviatedPlayer2Name = abbreviateName(player2Name);
 
-  // Display player names in the score area
-  player1NameElement.textContent = `${player1Name}`;
-  player2NameElement.textContent = `${player2Name}`;
-  player1NamesElement.textContent = `${abbreviatedPlayer1Name}`;
-  player2NamesElement.textContent = `${abbreviatedPlayer2Name}`;
-  // Show loader, hide main body
-  honeyComb.style.display = 'block';
-  mainBody.style.display = 'none';
-  
-  // Set a random timeout between 1000ms and 5000ms
-  const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
-  setTimeout(() => {
-      // Hide loader, show game elements
-      honeyComb.style.display = 'none';
-      gameMain.style.display = 'grid';
-      mainGame.style.display = 'grid';
-      na.style.display = 'block';
-      score.style.display = 'grid';
-  }, randomTimeout);
+  if (player1Name === '' || player2Name === ''){
+    error.style.opacity = '1';
+    setTimeout(() => {
+        error.style.opacity = '0';
+    }, 5000);
+} else{
+   // Display player names in the score area
+   player1NameElement.textContent = `${player1Name}`;
+   player2NameElement.textContent = `${player2Name}`;
+   player1NamesElement.textContent = `${abbreviatedPlayer1Name}`;
+   player2NamesElement.textContent = `${abbreviatedPlayer2Name}`;
+   // Show loader, hide main body
+   honeyComb.style.display = 'block';
+   mainBody.style.display = 'none';
+   
+   // Set a random timeout between 1000ms and 5000ms
+   const randomTimeout = Math.floor(Math.random() * 4000) + 1000;
+   setTimeout(() => {
+       // Hide loader, show game elements
+       honeyComb.style.display = 'none';
+       gameMain.style.display = 'grid';
+       mainGame.style.display = 'grid';
+       na.style.display = 'block';
+       score.style.display = 'grid';
+   }, randomTimeout);
+}
+
+ 
 }
 
 function endGameCompletely() {
-  location.reload();
+  const isConfirmed = confirm("Are you sure you want to quit Game 😥?")
+  if (isConfirmed){
+    location.reload();
+  }
+  
 }
 
 
@@ -514,7 +522,9 @@ function thirdGrid(){
   const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
-  
+  const inpuDes = document.querySelector('#inpuDes')
+
+  inpuDes.style.display = 'flex'
   singleForth.style.display = 'block'
   singleForth.style.backgroundColor = 'pink'
   multiForth.style.display = 'block'
@@ -550,7 +560,9 @@ function fourthGrid(){
   const turno = document.querySelector('.turn-o');
   const singleForth = document.querySelector('#singlePlayerBtn')
   const multiForth = document.querySelector('#multiplayerBtn')
-  
+  const inpuDes = document.querySelector('#inpuDes')
+
+  inpuDes.style.display = 'flex'
   singleForth.style.display = 'none'
   multiForth.style.display = 'none'
   mult.style.display = 'inline'
